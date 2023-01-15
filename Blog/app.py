@@ -29,12 +29,12 @@ def create():
         return render_template('newPost.html')
 
     elif request.method == "POST":
-        author = request.form['author']
-        title = request.form['title']
-        content = request.form['content']
+        username = request.form['author']
+        password = request.form['title']
+        dateOfRegistration = request.form['content']
 
         database = get_db_connection()
-        database.execute("INSERT INTO posts (username, password, dateOfRegistration) VALUES (?, ?, ?)", (author, title, content))
+        database.execute("INSERT INTO posts (username, password, dateOfRegistration) VALUES (?, ?, ?)", (username, password, dateOfRegistration))
         database.commit()
         database.close()
         return redirect(url_for('index'))
@@ -44,8 +44,26 @@ def post(id):
     post = get_post(id)
     return render_template('detailPost.html', post=post)
 
+@app.route('/delete/post-<int:id>/', methods=["POST"])
+def delete_post(id):
+    database = get_db_connection()
+    database.execute("DELETE FROM posts WHERE id = ?", (id, )).fetchone()
+    database.commit()
+    database.close()
+    return redirect(url_for('index'))
 
+
+@app.route('/', methods=["POST"])
+def delete_all():
+    database = get_db_connection()
+    database.execute("DELETE FROM posts")
+    database.commit()
+    database.close()
+    return redirect(url_for('index'))
+
+@app.route('/about/')
+def about():
+    return render_template('about.html')
 
 if __name__ == "__main__":
-    app.config['TIMEZONE'] = 'UTC-4'
     app.run(debug=True)

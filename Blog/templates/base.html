@@ -14,7 +14,7 @@
           <ul class="nav nav-pills">
             <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link active" aria-current="page">FBI</a></li>
             <li class="nav-item"><a href="{{ url_for('create') }}" class="nav-link" >New file</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">About FBI</a></li>
+            <li class="nav-item"><a href="{{ url_for('about') }}" class="nav-link">About FBI</a></li>
             <li class="nav-item"><button type="button" href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete all files</button></li>
 
           </ul>
@@ -28,7 +28,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger">Delete all</button>
+            <form method="POST" action="{{url_for('delete_all')}}" class="delete-entry">
+                <button type="submit" class="btn btn-danger">Delete all</button>
+            </form>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@
       <span class="d-block">{{post.dateOfRegistration}}</span>
       <span class="badge bg-primary">{{post.created}}</span>
     </div>
-  <form method="POST">
+  <form method="POST" action="{{url_for('delete_post', id=post.id)}}">
       <button type="submit" class="btn btn-danger">Delete post</button>
   </form>
   </div>
