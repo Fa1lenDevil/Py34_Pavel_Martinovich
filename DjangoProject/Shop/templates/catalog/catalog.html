@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+<div class="album py-5 bg-light" bis_skin_checked="1">
+    <div class="container" bis_skin_checked="1">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" bis_skin_checked="1">
+            {% for book in books %}
+            <div class="col" bis_skin_checked="1">
+                <div class="card shadow-sm" bis_skin_checked="1">
+                    <img src="{{ book.image.url }}" width="100%" height="500px">
+                    <div class="card-body" bis_skin_checked="1">
+                        <h4 class="card-text">{{ book.title }}</h4>
+                        <p class="card-text">{{ book.author }}, {{ book.get_date }}</p>
+                        <p class="card-text">{{book.get_genre}}</p>
+                        <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
+                            <div class="btn-group" bis_skin_checked="1">
+                                <a href="{{ book.get_book_url }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                <button type="button" class="btn btn-sm btn-dark">Add to cart</button>
+                            </div>
+                            <small class="badge bg-success">${{book.price}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+</main>
+
+{% block title %} {{ title }} Library {% endblock %}
+{% endblock %}
