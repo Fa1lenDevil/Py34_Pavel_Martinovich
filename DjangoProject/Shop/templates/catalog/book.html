@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %} About {{ book.title }} {% endblock %}
+
+{% block content %}
+
+<p>
+
+    <div class="card-body" bis_skin_checked="1">
+        <p><img src="{{ book.image.url }}" width="20%" height="450px" class="fig" align="left" vspace="5" hspace="30">
+            <h5 class="card-text"> {{book.title}} by {{book.author}}, {{book.get_date}}</h5>
+            <h6 class="card-text"> {{book.get_genre}} </h6>
+            <p class="card-text"> {{book.summary}} </p>
+            <h6 class="card-text"> {{book.amount}} books available</h6>
+        </p>
+        <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
+            <span class="badge bg-success">${{book.price}}</span><button type="button" class="btn btn-sm btn-dark">Add to cart</button>
+        </div>
+    </div>
+</p>
+
+{% endblock %}
