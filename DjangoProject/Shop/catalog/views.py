@@ -61,8 +61,13 @@ class SearchView(TemplateView):
 
     def post(self, request):
         search = request.POST['search']
-        books_by_title = Book.objects.filter(Q(title__icontains=search) | Q(price__icontains=search) |
-                                             Q(publication_date__icontains=search) | Q(summary__icontains=search))
+        books_by_title = Book.objects.filter(Q(title__icontains=search) |
+                                             Q(price__icontains=search) |
+                                             Q(publication_date__icontains=search) |
+                                             Q(summary__icontains=search) |
+                                             Q(author__last_name__icontains=search) |
+                                             Q(author__first_name__icontains=search))
+
 
         params = {
             'books': books_by_title,
@@ -70,9 +75,4 @@ class SearchView(TemplateView):
         }
 
         return render(request, self.template_name, params)
-
-# class AboutView(TemplateView):
-#     template_name = 'catalog/book.html'
-#
-#     def about(self, request):
 
