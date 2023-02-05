@@ -21,7 +21,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'catalog',
-    'accounts'
+    'accounts',
+    'cart'
 ]
 
 MIDDLEWARE = [
@@ -100,4 +101,3 @@ MEDIA_URL = '/source/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'source')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-SESSION_COOKIE_AGE = 60
