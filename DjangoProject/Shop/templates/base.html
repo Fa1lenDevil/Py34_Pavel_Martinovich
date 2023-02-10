@@ -42,7 +42,7 @@
 
           {% if user.is_authenticated %}
           <div class="dropdown">
-                    <a class="btn btn-outline-light dropdown-toggle" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cart {{user.cart.first.get_total_quantity}}</span></a>
+                    <a class="btn btn-outline-light dropdown-toggle" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cart ({{user.cart.first.get_total_quantity}})</span></a>
                     <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
                         <div style="height: 370px; overflow-y:scroll;">
                             <table class="table table-hover">

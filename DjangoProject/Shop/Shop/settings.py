@@ -22,8 +22,45 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog',
     'accounts',
-    'cart'
+    'cart',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.facebook'
 ]
+
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+
+AUTHENTICATION_BACKENDS = [
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email'
+        ]
+    },
+    'vk': {
+        'SCOPE': [
+            'profile',
+            'email'
+        ]
+    },
+    'facebook': {
+        'SCOPE': [
+            'profile',
+            'email'
+        ]
+    }
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

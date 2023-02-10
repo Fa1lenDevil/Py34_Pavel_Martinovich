@@ -2,12 +2,22 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Book, Author, Genre
 from django.db.models import Q
+from cart.models import Cart
 
 
 class CatalogView(TemplateView):
     template_name = "catalog/catalog.html"
 
     def get(self, request):
+        try:
+            Cart.objects.get(user=request.user)
+        except:
+            try:
+                Cart.objects.create(user=request.user)
+            except:
+                print('User is anonymous')
+
+
         books = Book.objects.all()
         genres = Genre.objects.all()
 
@@ -82,8 +92,6 @@ class SearchView(TemplateView):
                                              Q(author__last_name__icontains=search) |
                                              Q(author__first_name__icontains=search))
 
-
-
         params = {
             'books': books_by_title,
             'title': f"'{search}'",
@@ -91,6 +99,7 @@ class SearchView(TemplateView):
         }
 
         return render(request, self.template_name, params)
+
 
 class GenreCatalogView(TemplateView):
     template_name = "catalog/catalog.html"

@@ -9,5 +9,4 @@ urlpatterns = [
     path('authors/', AuthorsView.as_view(), name='catalog-authors'),
     path('authors/<str:first_name>-<str:last_name>-<int:id>/', AuthorCatalogView.as_view(), name="catalog-authors-author"),
     path('catalog/search/', SearchView.as_view(), name='catalog-search')
-
 ]
