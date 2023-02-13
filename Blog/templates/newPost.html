@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<div
+        class="container"><h1 align="center"><button type="button" class="btn btn-primary">Create new file</button></h1>
+</div>
+
+{% endblock %}
+{% block content %}
+<form method="POST">
+  <div class="form-outline mb-4">
+    <input type="text" id="form6Example3" class="form-control" name="author"/>
+    <label class="form-label" for="form6Example3">Username</label>
+  </div>
+
+  <div class="form-outline mb-4">
+    <input type="text" id="form6Example4" class="form-control" name="title"/>
+    <label class="form-label" for="form6Example4">Password</label>
+  </div>
+
+  <div class="form-outline mb-4">
+    <input class="form-control" id="form6Example7" rows="4" name="content"/>
+    <label class="form-label" for="form6Example7">Date of registration</label>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block mb-4">Create new file</button>
+</form>
+
+{% endblock %}
