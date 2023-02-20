@@ -28,7 +28,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.vk',
-    'allauth.socialaccount.providers.facebook'
+    'allauth.socialaccount.providers.facebook',
+    'rest_framework',
+    'api'
 ]
 
 

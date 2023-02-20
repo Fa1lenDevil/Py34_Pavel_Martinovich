@@ -23,7 +23,6 @@ class Genre(models.Model):
         return self.name
 
 
-
 class Book(models.Model):
     title = models.TextField()
     summary = models.TextField()
